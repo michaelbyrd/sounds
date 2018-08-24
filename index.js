@@ -1,4 +1,4 @@
-const tick = 250;
+const tick = 125;
 const numBeats = 16;
 const numNotes = 13;
 
