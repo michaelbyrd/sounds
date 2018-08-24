@@ -92,16 +92,8 @@ function clearAll() {
 
 function strum(){
   const index = beat % numBeats;
-  progress.setAttribute('value', index);
+  // progress.setAttribute('value', index);
   let old = beats[(index % numBeats) -1]
-  // if(old) {
-  //   old.classList.remove('active')
-  // } else {
-  //   console.log('1')
-  // 
-  //   // beats[numBeats.length - 1].classList.remove('active');
-  // }
-  
   let column = beats[index]; 
   clearAll();
   column.classList.add('active')
@@ -122,10 +114,11 @@ function strum(){
 const beats = document.querySelectorAll('.column');
 
 let beat = 0;
-const progress = document.createElement('progress');
-progress.setAttribute('max', numBeats);
-progress.setAttribute('value', 0);
-document.body.appendChild(progress);
+
+// const progress = document.createElement('progress');
+// progress.setAttribute('max', numBeats);
+// progress.setAttribute('value', 0);
+// document.body.appendChild(progress);
 // const soundSelect = document.createElement('select');
 // const types = ["sine", "square", "sawtooth", "triangle"];
 // for(const i = 0; i < types.count; i++) {
