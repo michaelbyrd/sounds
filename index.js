@@ -1,3 +1,7 @@
+const tick = 250;
+const numBeats = 12;
+const numNotes = 13;
+
 const frequencies=[
   261.6256,
   277.1826,					
@@ -36,13 +40,15 @@ function createOscillator(){
   o.start();
   return o;
 }
-
-for(let b = 0; b < 12; b++) {
+for(let n = 0; n < numNotes; n++) {
   oscillators.push(createOscillator());
+}
+
+for(let b = 0; b < numBeats; b++) {
   const div = document.createElement('div');
   div.classList.add('column');
   document.body.appendChild(div);
-  for(let note = 0; note < 12; note++) {
+  for(let note = 0; note < numNotes; note++) {
     div.appendChild(createButton(note)); 
   }
 }
@@ -50,7 +56,9 @@ for(let b = 0; b < 12; b++) {
 
 
 function strum(){
-  let notes = beats[beat % 12].children; 
+  const index = beat % numBeats;
+  progress.setAttribute('value', index);
+  let notes = beats[index].children; 
   beat++;
   for (const note of notes){
     const id = note.dataset.id
@@ -67,7 +75,13 @@ function strum(){
 const beats = document.querySelectorAll('.column');
 
 let beat = 0;
-setInterval(strum, 250);
+const progress = document.createElement('progress');
+progress.setAttribute('max', numBeats);
+progress.setAttribute('value', 0);
+
+
+document.body.appendChild(progress);
+setInterval(strum, tick);
 
 
 
