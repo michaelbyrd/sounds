@@ -84,21 +84,14 @@ for(let b = 0; b < numBeats; b++) {
   }
 }
 
-
-function clearAll() {
-  Array.from(document.querySelectorAll('.active')).forEach((e)=> e.classList.remove('active'));
-}
-
-
 function strum(){
   const index = beat % numBeats;
   // progress.setAttribute('value', index);
   let old = beats[(index % numBeats) -1]
-  let column = beats[index]; 
-  clearAll();
-  column.classList.add('active')
-  beat++;
-  
+
+  updateActiveClasses(beats, index);
+  let column = beats[index];
+
   for (const note of column.children){
     const id = note.dataset.id
     if(oscillators[id]) {
@@ -109,6 +102,18 @@ function strum(){
       }
     }
   }
+  beat++;
+}
+
+function updateActiveClasses(beats, index) {
+  for (var i = 0; i <= 2; i++) {
+    Array.from(document.querySelectorAll(`.active${i}`)).forEach((e)=> e.classList.remove(`active${i}`));
+    beats[mod((index - i), 16)].classList.add(`active${i}`)
+  }
+}
+
+function mod(n, m) {
+  return ((n % m) + m) % m;
 }
 
 const beats = document.querySelectorAll('.column');

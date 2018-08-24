@@ -1,52 +1,60 @@
 <!DOCTYPE html>
 <html>
-	<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Sounds</title>
 
-		<style>
-      * { margin: 0; }
-      .column { 
-        height: 100%;
-        /* TODO FIXME */
-        width: calc(100vw / 16);
-        display: inline-flex;
-        flex-direction: column-reverse;
-        justify-content: space-between;
-      }
-      .column:nth-of-type(4n - 3) button {
-        opacity: 1;
-      }
-			button {
-        opacity: 0.9;
-        height: calc(100vh / 8);
-        background-color: rgb(119, 47, 34);
-				outline: none;
-        border-left: 1px solid black;
-        border-right: 1px solid black;
-        border-top: 0px;
-        border-bottom : 0px;
-			}
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sounds</title>
 
-			button[data-checked='0'] {
-				background-color: rgb(59, 65, 73);
-			}
-      
-      .active button {
-        /* background-color: blue; */
-        border-left: 1px solid rgb(71, 165, 24);
-        border-right: 1px solid rgb(71, 165, 24);
-      }
-      
-      progress {
-        width: 100%;
-        /* height: 150px; */
-      }
+	<style>
+		* {
+			margin: 0;
+		}
 
-		</style>
-	</head>
-	<body>
-    <script src="./index.js"></script>
-	</body>
+		.column {
+			height: 100%;
+			/* TODO FIXME */
+			width: calc(100vw / 16);
+			display: inline-flex;
+			flex-direction: column-reverse;
+			justify-content: space-between;
+		}
+
+		.column:nth-of-type(4n - 3) button {
+			/* opacity: 1; */
+		}
+
+		button {
+			height: calc(90vh / 8);
+			background-color: rgb(119, 47, 34);
+			outline: none;
+			border: 1px solid black;
+		}
+
+		button[data-checked='0'] {
+			background-color: rgba(59, 65, 73, 0.9);
+			border: 0px solid white;
+		}
+
+		.active0 button {
+			opacity: 0.7 !important
+		}
+
+		.active1 button {
+			opacity: 0.8 !important
+		}
+
+		.active2 button {
+			opacity: 0.9 !important
+		}
+
+		progress {
+			width: 100%
+		}
+	</style>
+</head>
+
+<body>
+	<script src="./index.js"></script>
+</body>
+
 </html>
-
