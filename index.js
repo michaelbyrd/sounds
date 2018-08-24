@@ -1,5 +1,5 @@
 const tick = 250;
-const numBeats = 12;
+const numBeats = 16;
 const numNotes = 13;
 
 const frequencies=[
