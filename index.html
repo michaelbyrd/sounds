@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
 	<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Sounds</title>
+
 		<style>
+      * { margin: 0; }
       .column {
+        height: 100%;
+        width: calc(90vw / 12);
         display: inline-flex;
         flex-direction: column-reverse;
+        justify-content: space-between;
       }
 			button {
-				height: 16px;
-				background-color: red;
+        height: calc(90vh / 12);
+				background-color: smoke-grey;
 				outline: none;
 			}
 
@@ -20,7 +26,6 @@
     <script defer src="./index.js"></script>
 	</head>
 	<body>
-		<h1>Sounds</h1>
 	</body>
 </html>
 

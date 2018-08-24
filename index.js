@@ -1,5 +1,3 @@
-console.log('hello');
-
 const frequencies=[
   261.6256,
   277.1826,					
@@ -21,7 +19,6 @@ function createButton(id){
   a.setAttribute('data-id', id);
   a.setAttribute('data-checked', '0');
   a.onclick = function(e){
-    console.log(e.target);
     let element = e.target;
     element.setAttribute('data-checked', (element.dataset.checked === '0' ? '1': '0'));
   }
@@ -53,10 +50,8 @@ for(let b = 0; b < 12; b++) {
 
 
 function strum(){
-  console.log(beat);
   let notes = beats[beat % 12].children; 
   beat++;
-  //console.log(notes);
   for (const note of notes){
     const id = note.dataset.id
     if(oscillators[id]) {
@@ -72,7 +67,7 @@ function strum(){
 const beats = document.querySelectorAll('.column');
 
 let beat = 0;
-setInterval(strum, 600);
+setInterval(strum, 250);
 
 
 
