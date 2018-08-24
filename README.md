@@ -1,1 +1,2 @@
-# sounds
+# Setup
+- open `index.html`

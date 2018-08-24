@@ -16,19 +16,34 @@ const numBeats = 16;
 //   493.8833,
 //   523.2511
 // ]
+// const frequencies=[
+//   261.6256,
+// 
+//   293.6648,
+// 
+//   329.6276,
+//   349.2282,					
+// 
+//   391.9954,					
+// 
+//   440.0000,
+// 
+//   493.8833,
+//   523.2511
+// ]
 const frequencies=[
   261.6256,
-  
+
   293.6648,
-  
-  329.6276,
+  311.1270,					
+
   349.2282,					
 
   391.9954,					
-  
-  440.0000,
-  
-  493.8833,
+  415.3047,					
+
+  466.1638,					
+
   523.2511
 ]
 const numNotes = frequencies.length;
@@ -71,7 +86,7 @@ for(let b = 0; b < numBeats; b++) {
 
 function strum(){
   const index = beat % numBeats;
-  progress.setAttribute('value', index);
+  // progress.setAttribute('value', index);
   let old = beats[(index % numBeats) -1]
 
   updateActiveClasses(beats, index);
@@ -104,10 +119,11 @@ function mod(n, m) {
 const beats = document.querySelectorAll('.column');
 
 let beat = 0;
-const progress = document.createElement('progress');
-progress.setAttribute('max', numBeats);
-progress.setAttribute('value', 0);
-document.body.appendChild(progress);
+
+// const progress = document.createElement('progress');
+// progress.setAttribute('max', numBeats);
+// progress.setAttribute('value', 0);
+// document.body.appendChild(progress);
 // const soundSelect = document.createElement('select');
 // const types = ["sine", "square", "sawtooth", "triangle"];
 // for(const i = 0; i < types.count; i++) {
