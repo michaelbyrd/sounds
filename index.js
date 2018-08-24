@@ -1,22 +1,37 @@
 const tick = 125;
 const numBeats = 16;
-const numNotes = 13;
 
+// const frequencies=[
+//   261.6256,
+//   277.1826,					
+//   293.6648,
+//   311.1270,					
+//   329.6276,
+//   349.2282,					
+//   369.9944,					
+//   391.9954,					
+//   415.3047,					
+//   440.0000,
+//   466.1638,					
+//   493.8833,
+//   523.2511
+// ]
 const frequencies=[
   261.6256,
-  277.1826,					
+  
   293.6648,
-  311.1270,					
+  
   329.6276,
   349.2282,					
-  369.9944,					
+
   391.9954,					
-  415.3047,					
+  
   440.0000,
-  466.1638,					
+  
   493.8833,
   523.2511
 ]
+const numNotes = frequencies.length;
 
 function createButton(id){
   let a = document.createElement('button');
@@ -36,6 +51,7 @@ const context = new AudioContext();
 function createOscillator(){
   const o = context.createOscillator();
   o.frequency.value = 0;
+  o.type = 'triangle';
   o.connect(context.destination);
   o.start();
   return o;
@@ -54,13 +70,29 @@ for(let b = 0; b < numBeats; b++) {
 }
 
 
+function clearAll() {
+  Array.from(document.querySelectorAll('.active')).forEach((e)=> e.classList.remove('active'));
+}
+
 
 function strum(){
   const index = beat % numBeats;
   progress.setAttribute('value', index);
-  let notes = beats[index].children; 
+  let old = beats[(index % numBeats) -1]
+  // if(old) {
+  //   old.classList.remove('active')
+  // } else {
+  //   console.log('1')
+  // 
+  //   // beats[numBeats.length - 1].classList.remove('active');
+  // }
+  
+  let column = beats[index]; 
+  clearAll();
+  column.classList.add('active')
   beat++;
-  for (const note of notes){
+  
+  for (const note of column.children){
     const id = note.dataset.id
     if(oscillators[id]) {
       if(note.dataset.checked === '0') {
@@ -78,9 +110,19 @@ let beat = 0;
 const progress = document.createElement('progress');
 progress.setAttribute('max', numBeats);
 progress.setAttribute('value', 0);
-
-
 document.body.appendChild(progress);
+// const soundSelect = document.createElement('select');
+// const types = ["sine", "square", "sawtooth", "triangle"];
+// for(const i = 0; i < types.count; i++) {
+//   const opt = document.createElement('option');
+//   opt.setAttribute('value', types[i]);
+//   opt.innerHTML += types[i];
+//   soundSelect.appendChild(opt);
+// }
+// 
+// document.body.appendChild(soundSelect);
+
+
 setInterval(strum, tick);
 
 

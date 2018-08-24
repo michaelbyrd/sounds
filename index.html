@@ -19,14 +19,22 @@
       }
 			button {
         opacity: 0.9;
-        height: calc(90vh / 12);
+        height: calc(90vh / 8);
         background-color: rgb(119, 47, 34);
 				outline: none;
+        border: 1px solid black;
 			}
 
 			button[data-checked='0'] {
 				background-color: rgb(59, 65, 73);
 			}
+      
+      
+      .active button {
+        /* background-color: blue; */
+        border-left: 1px solid rgb(244, 173, 66);
+        border-right: 1px solid rgb(244, 173, 66);
+      }
       
       progress {
         width: 100%;
